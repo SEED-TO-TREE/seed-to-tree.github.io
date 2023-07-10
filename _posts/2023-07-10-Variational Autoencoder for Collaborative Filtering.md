@@ -37,7 +37,7 @@ WWW '18년도에 나온 논문이고 이후 이 논문을 기반으로 VAE for C
 ### Methods
 ---
 
-![vae_cf1](https://namu-tree-kim.github.io/assets/images/vae_cf1.png "vae_cf1"){: .align-center}
+![vae_cf1](https://namu-tree-kim.github.io/assets/images/vae_cf1.PNG "vae_cf1"){: .align-center}
 
 **모델의 흐름**
 
@@ -70,7 +70,7 @@ $\pi(z_u)$의 Output은 Softmax를 거쳐서 User u가 모든 Item i 를 클릭�
 
 
 **Multinomial Likelihood Distribution**
-![vae_cf_multinomial](https://namu-tree-kim.github.io/assets/images/vae_cf_multinomial.png "vae_cf_multinomial"){: .align-center}
+![vae_cf_multinomial](https://namu-tree-kim.github.io/assets/images/vae_cf_multinomial.PNG "vae_cf_multinomial"){: .align-center}
 
 위 처럼 multinomial likelihood를 사용한다. multinomial likelihood를 사용하면 좋은 이유는 추천 Ranking Loss와 맥락이 잘 맞다. 왜냐하면 $\pi(z_u)$ 의 총 합은 항상 1이 되어야하고 모든 items는 제한된 확률 분포 공간안에서 높은 확률을 차지하기 위해 경쟁해야한다.(Must compete for this limited budget) 즉 더 많이 클릭한 items에 더 높은 확률을 부여할 것이다.  이것은 top-N ranking loss와 같은 평가 방식이기 때문에 multinomial likelihood를 사용하는 것이 성능이 더 좋다.
 
@@ -80,8 +80,8 @@ $\pi(z_u)$의 Output은 Softmax를 거쳐서 User u가 모든 Item i 를 클릭�
 
 **Partial Regularizing EBLO**
 
-![vae_cf_elbo1](https://namu-tree-kim.github.io/assets/images/vae_cf_elbo1.png "vae_cf_elbo1"){: .align-center}
-![vae_cf_elbo2](https://namu-tree-kim.github.io/assets/images/vae_cf_elbo2.png "vae_cf_elbo2"){: .align-center}
+![vae_cf_elbo1](https://namu-tree-kim.github.io/assets/images/vae_cf_elbo1.PNG "vae_cf_elbo1"){: .align-center}
+![vae_cf_elbo2](https://namu-tree-kim.github.io/assets/images/vae_cf_elbo2.PNG "vae_cf_elbo2"){: .align-center}
 
 기존 ELBO식과 달리 KL Term에 $\beta$가 붙는다. 이는 $q(z\|x)$가 prior $p(z)$를 따르게하는 regularizer를 완화하여 추천 성능을 높이는데 초점을 맞춘다.
 Collaborative Filtering의 핵심은 추천 정확도를 높이는 것이지 기존 Historical Data를 비슷하게 잘 생성하는 것(ancestral sampling)이 아니기 때문이다.
