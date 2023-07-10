@@ -1,12 +1,25 @@
 ---
 title: "VAE(Variational AutoEncoder) 핵심 요약"
 
+excerpt: "Vaiaional Autoencoder 모델 알고리즘 요약!"
+
+date: 2023-06-30 16:50:00 +0900
+lastmod: 2023-06-30 16:50:00 +0900 # sitemap.xml에서 사용됨
+
+author_profile: false # 왼쪽부분 프로필을 띄울건지
+
 categories:
   - Model
 
 tags:
   - ML
   - VAE
+
+# table of contents
+toc: true # 오른쪽 부분에 목차를 자동 생성해준다.
+toc_label: "table of content" # toc 이름 설정
+toc_icon: "bars" # 아이콘 설정
+toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 ---
 
 > 막연하게만 이해하고 있던 것들을 정리를 통해 구체화 해보자! VAE 부터 시작!

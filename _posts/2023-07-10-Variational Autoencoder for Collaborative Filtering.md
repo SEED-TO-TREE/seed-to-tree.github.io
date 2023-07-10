@@ -1,5 +1,12 @@
 ---
-title: "Vaiaional Autoencoder for Collaborative Filtering 논문 정리"
+layout: single
+title: "Vaiaional Autoencoder for Collaborative Filtering"
+excerpt: "Vaiaional Autoencoder for Collaborative Filtering 논문 정리!"
+
+date: 2023-07-10 16:50:00 +0900
+lastmod: 2023-07-10 16:50:00 +0900 # sitemap.xml에서 사용됨
+
+author_profile: false # 왼쪽부분 프로필을 띄울건지
 
 categories:
   - Recommender System
@@ -7,6 +14,12 @@ categories:
 tags:
   - ML
   - VAE
+
+# table of contents
+toc: true # 오른쪽 부분에 목차를 자동 생성해준다.
+toc_label: "table of content" # toc 이름 설정
+toc_icon: "bars" # 아이콘 설정
+toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 ---
 
 Variational Autoencoder를 추천 시스템에 적용할 수 있을까?
@@ -17,7 +30,7 @@ WWW '18년도에 나온 논문이고 이후 이 논문을 기반으로 VAE for C
 
 먼저 이 논문의 핵심 Contributions을 기준으로 두고 논문을 읽어나가면 이해가 쉬우므로 Contributions을 확인해보자.
 
-### Contributions
+## Contributions
 ---
 **1. VAE를 CF에 적용한 것**
 
@@ -34,12 +47,12 @@ WWW '18년도에 나온 논문이고 이후 이 논문을 기반으로 VAE for C
   (이는 데이터가 달라져도 적용 가능한 General한 방법이다.)
 
 
-### Methods
+## Methods
 ---
 
 ![vae_cf1](https://namu-tree-kim.github.io/assets/images/vae_cf1.PNG "vae_cf1"){: .align-center}
 
-**모델의 흐름**
+### **모델의 흐름**
 
 $z_{u} \to f_{\theta}(z_{u}) \to x_{u}$
 
@@ -69,7 +82,7 @@ $N_u$는 User u가 전체 item을 클릭한 수의 총합 즉 User u의 전체 �
 $\pi(z_u)$의 Output은 Softmax를 거쳐서 User u가 모든 Item i 를 클릭할 확률을 의미한다.
 
 
-**Multinomial Likelihood Distribution**
+### **Multinomial Likelihood Distribution**
 ![vae_cf_multinomial](https://namu-tree-kim.github.io/assets/images/vae_cf_multinomial.PNG "vae_cf_multinomial"){: .align-center}
 
 위 처럼 multinomial likelihood를 사용한다. multinomial likelihood를 사용하면 좋은 이유는 추천 Ranking Loss와 맥락이 잘 맞다. 왜냐하면 $\pi(z_u)$ 의 총 합은 항상 1이 되어야하고 모든 items는 제한된 확률 분포 공간안에서 높은 확률을 차지하기 위해 경쟁해야한다.(Must compete for this limited budget) 즉 더 많이 클릭한 items에 더 높은 확률을 부여할 것이다.  이것은 top-N ranking loss와 같은 평가 방식이기 때문에 multinomial likelihood를 사용하는 것이 성능이 더 좋다.
@@ -78,7 +91,7 @@ $\pi(z_u)$의 Output은 Softmax를 거쳐서 User u가 모든 Item i 를 클릭�
 
 
 
-**Partial Regularizing EBLO**
+### **Partial Regularizing EBLO**
 
 ![vae_cf_elbo1](https://namu-tree-kim.github.io/assets/images/vae_cf_elbo1.PNG "vae_cf_elbo1"){: .align-center}
 ![vae_cf_elbo2](https://namu-tree-kim.github.io/assets/images/vae_cf_elbo2.PNG "vae_cf_elbo2"){: .align-center}
