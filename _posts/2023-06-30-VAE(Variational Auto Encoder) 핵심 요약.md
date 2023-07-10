@@ -2,7 +2,7 @@
 title: "VAE(Variational AutoEncoder) 핵심 요약"
 
 categories:
-  - ML
+  - Model
 
 tags:
   - ML
@@ -97,7 +97,7 @@ Latent Variable Z는 원하는 데이터를 뽑기 위한 리모컨 같은 역�
 
 ![va_vae_encode](https://namu-tree-kim.github.io/assets/images/va_vae_encode.jpg "va_vae_encode"){: .align-center}
 
-1. Encoding 차이점
+**1. Encoding 차이점**
 
 VAE는 Latent Space 포인트 주변 Multivariate Normal Distribution에 매핑 vs AE는 Latent Space 한 포인트에 직접 매핑
 
@@ -105,9 +105,10 @@ VAE는 Latent Space 포인트 주변 Multivariate Normal Distribution에 매핑 
 
 이전 AE는 latent space를 연속적으로 만들 필요가 없었지만 이렇게되면 평균 주변 지역에서 랜덤한 포인트를 샘플링 하므로 Decoder는 Reconstruction Error를 줄이기 위해 자연스럽게 (-2, 2)와 (-2.1, 2.1)이 비슷한 데이터를 reconstruct하도록 만들어진다.
 
-2. Loss Function 차이점
+**2. Loss Function 차이점**
 
-$D_{KL}[N(\mu,\sigma)|| N(0,1)]$
+
+$D_{KL} [N(\mu,\sigma) \|\| N(0,1)]$
 
 KL Term이 Reconstruction에러에 더해진다.
 
@@ -126,11 +127,12 @@ KL Term이 Reconstruction에러에 더해진다.
 
 ---
 
-1. Variational Inference
+**1. Variational Inference**
+
    학습시에 p(Z|X)를 알 수 없으므로 우리가 다루기 쉬운 q()분포를 가정하여 q(Z|X)를 p(Z|X)에 근사한다.
    (수식 나중에 추가 예정)
 
-2. Reparameterization Trick
+**2. Reparameterization Trick**
 
    학습시에 Monte Carlo Method를 적용하게 되고 Z 샘플링시에 평균, 분산 값이 랜덤이면 back propagation 적용이 불가능하다.
 
