@@ -100,7 +100,7 @@
 		}
 
 		.project-title {
-			font-size: 2.5rem;
+			font-size: 2.2rem;
 			font-weight: 800;
 			margin-bottom: 1.25rem;
 			letter-spacing: -1px;
@@ -123,19 +123,14 @@
 			color: #525f7f;
 		}
 
+		.badge.highlight {
+			background: #eef2ff;
+			color: #4f46e5;
+		}
+
 		.badge.success {
 			background: #ecfdf5;
 			color: #059669;
-		}
-
-		.badge.info {
-			background: #e0f2fe;
-			color: #0369a1;
-		}
-
-		.badge.primary {
-			background: #eef2ff;
-			color: #4f46e5;
 		}
 
 		.project-content {
@@ -149,9 +144,21 @@
 		.project-content h3 {
 			font-size: 1.5rem;
 			font-weight: 700;
-			margin-top: 2rem;
-			margin-bottom: 1rem;
+			margin-top: 3rem;
+			margin-bottom: 1.25rem;
 			color: var(--text-main);
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.project-content h3::before {
+			content: '';
+			display: inline-block;
+			width: 4px;
+			height: 1.2rem;
+			background: var(--accent-color);
+			border-radius: 2px;
 		}
 
 		.project-content h3:first-child {
@@ -160,13 +167,13 @@
 
 		.project-content p {
 			color: var(--text-sub);
-			margin-bottom: 1.5rem;
+			margin-bottom: 1.25rem;
 			line-height: 1.7;
 		}
 
 		.project-content ul {
 			margin-bottom: 1.5rem;
-			padding-left: 1.5rem;
+			padding-left: 1.2rem;
 		}
 
 		.project-content li {
@@ -180,26 +187,87 @@
 			font-weight: 600;
 		}
 
-		.project-image {
-			width: 100%;
-			max-width: 100%;
-			margin: 2rem 0 0 0;
+		/* Stat Grid */
+		.stat-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1rem;
+			margin: 1.5rem 0;
+		}
+
+		.stat-item {
+			text-align: center;
+			padding: 1.5rem;
+			background: #ffffff;
 			border-radius: 12px;
-			box-shadow: var(--shadow-sm);
+			border: 1px solid var(--border-color);
+		}
+
+		.stat-value {
+			font-size: 1.5rem;
+			font-weight: 800;
+			color: var(--accent-color);
+			display: block;
+		}
+
+		.stat-label {
+			font-size: 0.8rem;
+			color: var(--text-sub);
+		}
+
+		/* Visual Containers */
+		.visual-container {
+			background: #f8f9fb;
+			border-radius: 16px;
+			padding: 2rem;
+			margin: 2rem 0;
+			text-align: center;
+			border: 1px solid var(--border-color);
+		}
+
+		.visual-title {
+			font-size: 0.9rem;
+			font-weight: 700;
+			color: var(--text-sub);
+			margin-bottom: 1.5rem;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+
+		.svg-diagram {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.methodology-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1.5rem;
+			margin-bottom: 2rem;
+		}
+
+		.method-card {
+			background: #f8f9fb;
+			padding: 1.5rem;
+			border-radius: 12px;
+			border: 1px solid var(--border-color);
+		}
+
+		.method-card h4 {
+			font-size: 1rem;
+			margin-bottom: 0.75rem;
+			color: var(--accent-color);
 		}
 
 		/* Mobile Adjustments */
 		@media (max-width: 640px) {
 			.project-title {
-				font-size: 2rem;
+				font-size: 1.8rem;
 			}
 
-			.container {
-				padding: 2rem 20px;
-			}
-
-			.project-content {
-				padding: 1.5rem;
+			.methodology-grid,
+			.stat-grid {
+				grid-template-columns: 1fr;
 			}
 		}
 	</style>
@@ -218,38 +286,100 @@
 		</div>
 
 		<div class="project-header">
-			<h1 class="project-title">CCTV 기반 주차장 점유율 감지 시스템</h1>
+			<h1 class="project-title">Smart City: CCTV 기반 지능형 주차 점유율 감지 시스템</h1>
 			<div class="badge-container">
-				<span class="badge success">상용화</span>
-				<span class="badge info">Computer Vision</span>
-				<span class="badge primary">2023.06 - 2024.12</span>
+				<span class="badge success">상용화 완료 (매출 3.3억)</span>
+				<span class="badge highlight">과기정통부 우수 프로젝트</span>
+				<span class="badge">Object Detection</span>
+				<span class="badge">Generative AI</span>
 			</div>
 		</div>
 
 		<div class="project-content">
 			<h3>프로젝트 개요</h3>
-			<p>산학연계 스마트시티 디지털 혁신 프로젝트 (과기정통부 & 대구시 주관)에서 프로젝트 리더로 참여하여 CCTV 기반 주차장 점유율 감지 시스템을 개발하고 상용화했습니다.</p>
+			<p>산학연계 스마트시티 디지털 혁신 프로젝트(과기정통부 & 대구시 주관)의 일환으로 진행된 프로젝트입니다. **기존 저사양 CCTV 인프라를 활용하여 실시간 주차 점유율을 99% 정확도로
+				판별하는 알고리즘**을 연구·개발했습니다. 프로젝트 리더로서 기술 기획, 알고리즘 설계 및 성능 검증을 총괄했으며, 결과물은 대구, 구미, 포항 등 실제 현장에 도입되었습니다.</p>
 
-			<h3>주요 성과</h3>
+			<div class="stat-grid">
+				<div class="stat-item">
+					<span class="stat-value">3.3억+</span>
+					<span class="stat-label">프로젝트 연계 누적 매출액</span>
+				</div>
+				<div class="stat-item">
+					<span class="stat-value">99%</span>
+					<span class="stat-label">최종 판별 정확도</span>
+				</div>
+			</div>
+
+			<h3>핵심 연구 및 구현 기술</h3>
+			<div class="methodology-grid">
+				<div class="method-card">
+					<h4>1. 하이브리드 판별 알고리즘 설계</h4>
+					<p>주차면별 <strong>이진 분류(ResNet50)</strong>와 차량 <strong>객체 탐지(YOLO v8)</strong>를 결합했습니다. 폐쇄 구간이나 악천후 등
+						환경적 제약에서도 안정적인 판별 성능을 유지하도록 설계했습니다.</p>
+				</div>
+				<div class="method-card">
+					<h4>2. Generative AI 기반 데이터 증강</h4>
+					<p>Stable Diffusion과 ControlNet을 활용하여 가상의 학습 데이터를 생성했습니다. 실제 데이터 수집 및 라벨링 비용을 절감하면서도 모델의 일반화 성능을
+						높였습니다.</p>
+				</div>
+			</div>
+
+			<!-- Visual 1: Detection Logic -->
+			<div class="visual-container">
+				<div class="visual-title">Fig 1. Multi-Stage Detection Logic</div>
+				<svg class="svg-diagram" width="600" height="200" viewBox="0 0 600 200" fill="none"
+					xmlns="http://www.w3.org/2000/svg">
+					<!-- CCTV Input -->
+					<rect x="20" y="50" width="100" height="100" rx="8" fill="#F1F3F9" stroke="#E3E8EE" />
+					<text x="70" y="105" text-anchor="middle" font-size="12" fill="#4F566B">CCTV Stream</text>
+
+					<path d="M120 100 L 150 100" stroke="#E3E8EE" stroke-width="2" />
+
+					<!-- Binary Classification Branch -->
+					<rect x="150" y="30" width="160" height="60" rx="8" fill="#EEF2FF" stroke="#635BFF" />
+					<text x="230" y="65" text-anchor="middle" font-size="11" font-weight="700" fill="#635BFF">Binary
+						Classification</text>
+					<text x="230" y="80" text-anchor="middle" font-size="9" fill="#635BFF">(ResNet50)</text>
+
+					<!-- Object Detection Branch -->
+					<rect x="150" y="110" width="160" height="60" rx="8" fill="#ECFDF5" stroke="#059669" />
+					<text x="230" y="145" text-anchor="middle" font-size="11" font-weight="700" fill="#059669">Object
+						Detection</text>
+					<text x="230" y="160" text-anchor="middle" font-size="9" fill="#059669">(YOLO v8)</text>
+
+					<path d="M310 60 Q 340 60, 340 100" stroke="#E3E8EE" stroke-width="2" fill="none" />
+					<path d="M310 140 Q 340 140, 340 100" stroke="#E3E8EE" stroke-width="2" fill="none" />
+
+					<!-- Fusion Module -->
+					<rect x="340" y="75" width="120" height="50" rx="25" fill="#FFFBEB" stroke="#D97706"
+						stroke-width="2" />
+					<text x="400" y="105" text-anchor="middle" font-size="12" font-weight="800" fill="#D97706">Decision
+						Fusion</text>
+
+					<path d="M460 100 L 490 100" stroke="#E3E8EE" stroke-width="2" />
+
+					<!-- Output -->
+					<rect x="490" y="70" width="90" height="60" rx="8" fill="#1A1F36" />
+					<text x="535" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="white">Result
+						Dashboard</text>
+				</svg>
+			</div>
+
+			<h3>주요 성과 및 역할</h3>
 			<ul>
-				<li><strong>상용화 성공</strong>: 대구, 구미, 포항에 배포하여 <strong>3억 3천만원 매출</strong> 달성</li>
-				<li><strong>정확도</strong>: 99% 정확도 달성</li>
-				<li><strong>비용 효율성</strong>: 기존 CCTV를 재활용하여 1:1 센서 배치 대비 우수한 비용 효율성 확보</li>
-				<li><strong>우수 프로젝트 선정</strong>: 과기정통부 & 대구시 주관 우수 프로젝트로 선정</li>
+				<li><strong>알고리즘 총괄</strong>: 이진 분류 및 객체 탐지 모델 선정과 앙상블 전략 수립</li>
+				<li><strong>데이터 증강 연구</strong>: Diffusion 모델 기반의 가상 데이터 생성 파이프라인 구축 및 학술 대회 논문 발표</li>
+				<li><strong>현장 최적화</strong>: 실내/실외 주차장 환경에 따른 ROI 설정 및 모델 미세 조정(Fine-tuning) 지도</li>
+				<li><strong>프로젝트 리딩</strong>: 참여 연구원 및 협력 기업(주한맥아이피에스 등)과의 기술 커뮤니케이션 주도</li>
 			</ul>
 
-			<h3>기술 스택</h3>
+			<h3>기술 스택 및 도구</h3>
 			<ul>
-				<li>Computer Vision</li>
-				<li>Deep Learning</li>
-				<li>Object Detection</li>
-				<li>CCTV 영상 처리</li>
+				<li><strong>AI/ML</strong>: PyTorch, YOLO v8, ResNet50, Stable Diffusion, ControlNet</li>
+				<li><strong>CV</strong>: OpenCV (영상 전처리, ROI 처리, Canny Edge Detection)</li>
+				<li><strong>Environment</strong>: Linux, NVIDIA GPU 서버 인프라 활용</li>
 			</ul>
-
-			<h3>프로젝트 역할</h3>
-			<p>POSTECH Data Intelligence Lab에서 프로젝트 리더로 참여하여 전체 프로젝트를 기획하고 개발을 주도했습니다.</p>
-
-			<img src="../assets/images/logo.png" alt="프로젝트 이미지" class="project-image">
 		</div>
 	</main>
 </body>
