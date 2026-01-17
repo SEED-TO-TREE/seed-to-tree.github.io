@@ -100,7 +100,7 @@
 		}
 
 		.project-title {
-			font-size: 2.5rem;
+			font-size: 2.2rem;
 			font-weight: 800;
 			margin-bottom: 1.25rem;
 			letter-spacing: -1px;
@@ -123,19 +123,14 @@
 			color: #525f7f;
 		}
 
-		.badge.info {
-			background: #e0f2fe;
-			color: #0369a1;
-		}
-
-		.badge.secondary {
-			background: #f1f3f9;
-			color: #525f7f;
-		}
-
-		.badge.primary {
+		.badge.highlight {
 			background: #eef2ff;
 			color: #4f46e5;
+		}
+
+		.badge.success {
+			background: #ecfdf5;
+			color: #059669;
 		}
 
 		.project-content {
@@ -149,9 +144,21 @@
 		.project-content h3 {
 			font-size: 1.5rem;
 			font-weight: 700;
-			margin-top: 2rem;
-			margin-bottom: 1rem;
+			margin-top: 3rem;
+			margin-bottom: 1.25rem;
 			color: var(--text-main);
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.project-content h3::before {
+			content: '';
+			display: inline-block;
+			width: 4px;
+			height: 1.2rem;
+			background: var(--accent-color);
+			border-radius: 2px;
 		}
 
 		.project-content h3:first-child {
@@ -160,13 +167,13 @@
 
 		.project-content p {
 			color: var(--text-sub);
-			margin-bottom: 1.5rem;
+			margin-bottom: 1.25rem;
 			line-height: 1.7;
 		}
 
 		.project-content ul {
 			margin-bottom: 1.5rem;
-			padding-left: 1.5rem;
+			padding-left: 1.2rem;
 		}
 
 		.project-content li {
@@ -180,22 +187,76 @@
 			font-weight: 600;
 		}
 
-		.project-image {
-			width: 100%;
+		/* Methodology Visuals */
+		.visual-container {
+			background: #f8f9fb;
+			border-radius: 16px;
+			padding: 2rem;
+			margin: 2rem 0;
+			text-align: center;
+			border: 1px solid var(--border-color);
+		}
+
+		.visual-title {
+			font-size: 0.9rem;
+			font-weight: 700;
+			color: var(--text-sub);
+			margin-bottom: 1.5rem;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+
+		.svg-diagram {
 			max-width: 100%;
-			margin: 2rem 0 0 0;
+			height: auto;
+		}
+
+		.methodology-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1.5rem;
+			margin-bottom: 2rem;
+		}
+
+		.method-card {
+			background: #f8f9fb;
+			padding: 1.5rem;
 			border-radius: 12px;
-			box-shadow: var(--shadow-sm);
+			border: 1px solid var(--border-color);
+		}
+
+		.method-card h4 {
+			font-size: 1rem;
+			margin-bottom: 0.75rem;
+			color: var(--accent-color);
+		}
+
+		.result-table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 1rem 0;
+			font-size: 0.9rem;
+		}
+
+		.result-table th,
+		.result-table td {
+			border: 1px solid var(--border-color);
+			padding: 10px;
+			text-align: center;
+		}
+
+		.result-table th {
+			background: #f1f3f9;
 		}
 
 		/* Mobile Adjustments */
 		@media (max-width: 640px) {
 			.project-title {
-				font-size: 2rem;
+				font-size: 1.8rem;
 			}
 
-			.container {
-				padding: 2rem 20px;
+			.methodology-grid {
+				grid-template-columns: 1fr;
 			}
 
 			.project-content {
@@ -220,36 +281,166 @@
 		<div class="project-header">
 			<h1 class="project-title">Transfer Learning-based Mixture Gas Classification</h1>
 			<div class="badge-container">
-				<span class="badge info">Transfer Learning</span>
-				<span class="badge secondary">Image Classification</span>
-				<span class="badge primary">2019.08 - 2020.09</span>
+				<span class="badge highlight">대한산업공학회지 게재</span>
+				<span class="badge">Deep Learning</span>
+				<span class="badge">Transfer Learning</span>
+				<span class="badge success">산학협력(태성환경연구소)</span>
 			</div>
 		</div>
 
 		<div class="project-content">
 			<h3>프로젝트 개요</h3>
-			<p>UNIST Data Analytics Lab에서 학부 인턴으로 참여하여 태성환경연구소와 협업으로 진행한 프로젝트입니다. 이미지 매핑을 활용한 Transfer Learning 기반 혼합 가스
-				분류 모델을 개발했습니다.</p>
+			<p>본 프로젝트는 산업 현장에서 발생하는 독성 가스 및 악취의 원인을 실시간으로 파악하기 위한 <strong>혼합 가스 분류 시스템</strong> 개발을 목적으로 합니다. UNIST Data
+				Analytics Lab에서 태성환경연구소와 협업하여 진행하였으며, 소량의 가스 센서 데이터로도 높은 분류 성능을 내기 위해 전이 학습(Transfer Learning)을 도입했습니다.
+			</p>
 
-			<h3>주요 성과</h3>
+			<!-- Visual 1: Image Mapping Process -->
+			<div class="visual-container">
+				<div class="visual-title">Fig 1. Image Mapping Process</div>
+				<svg class="svg-diagram" width="600" height="220" viewBox="0 0 600 220" fill="none"
+					xmlns="http://www.w3.org/2000/svg">
+					<!-- Input Signal -->
+					<rect x="20" y="60" width="100" height="100" rx="8" fill="white" stroke="#E3E8EE"
+						stroke-width="2" />
+					<path d="M30 140 Q 45 80, 60 110 T 90 130 T 110 100" stroke="#635BFF" stroke-width="2"
+						fill="none" />
+					<path d="M30 150 Q 50 100, 70 140 T 100 120" stroke="#FF5B5B" stroke-width="1.5" fill="none"
+						opacity="0.6" />
+					<text x="70" y="180" text-anchor="middle" font-size="12" fill="#4F566B" font-weight="600">GSA
+						Signal</text>
+
+					<!-- Arrow -->
+					<path d="M140 110 L 180 110" stroke="#E3E8EE" stroke-width="2" marker-end="url(#arrowhead)" />
+
+					<!-- Mapping Box -->
+					<rect x="200" y="40" width="160" height="140" rx="12" fill="#EEF2FF" stroke="#635BFF"
+						stroke-dasharray="4 4" />
+					<text x="280" y="115" text-anchor="middle" font-size="13" fill="#635BFF" font-weight="700">Image
+						Mapping<tspan x="280" dy="18" font-size="10" font-weight="400">(RGB Encoding)</tspan></text>
+
+					<!-- Arrow -->
+					<path d="M380 110 L 420 110" stroke="#E3E8EE" stroke-width="2" marker-end="url(#arrowhead)" />
+
+					<!-- Result Image -->
+					<rect x="440" y="60" width="100" height="100" rx="8" fill="url(#grid-gradient)" stroke="#E3E8EE"
+						stroke-width="2" />
+					<text x="490" y="180" text-anchor="middle" font-size="12" fill="#4F566B" font-weight="600">Analogous
+						Image</text>
+
+					<defs>
+						<marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+							<polygon points="0 0, 10 3.5, 0 7" fill="#E3E8EE" />
+						</marker>
+						<linearGradient id="grid-gradient" x1="0" y1="0" x2="100" y2="100"
+							gradientUnits="userSpaceOnUse">
+							<stop stop-color="#635BFF" />
+							<stop offset="0.5" stop-color="#FF5B5B" />
+							<stop offset="1" stop-color="#FFD700" />
+						</linearGradient>
+					</defs>
+				</svg>
+			</div>
+
+			<h3>핵심 도전 과제</h3>
 			<ul>
-				<li><strong>Transfer Learning 적용</strong>: 이미지 매핑을 활용한 혼합 가스 분류 모델 개발</li>
-				<li><strong>산학협력</strong>: 태성환경연구소와의 협업 프로젝트</li>
-				<li><strong>학부 연구 경험</strong>: Data Analytics Lab에서의 연구 경험</li>
+				<li><strong>비선형적 특성</strong>: 혼합 가스는 개별 가스의 선형 결합이 아닌 화학 작용으로 인한 비선형적 센서 응답값을 가짐</li>
+				<li><strong>데이터 수집 비용</strong>: 실험실 환경에서 정교한 혼합 가스 데이터를 생성하는 데 막대한 비용과 시간이 소요됨</li>
+				<li><strong>고차원 시계열</strong>: 다수의 센서(GSA)에서 수집되는 복잡한 시계열 데이터의 특징 추출 필요</li>
 			</ul>
 
-			<h3>기술 스택</h3>
+			<h3>주요 방법론</h3>
+			<div class="methodology-grid">
+				<div class="method-card">
+					<h4>1. 이미지 매핑 (Image Mapping)</h4>
+					<p>다변량 시계열 데이터(300초 간격)를 2D 유사 이미지 행렬(640x480x3)로 변환. 각 센서 응답값에 고유 색상을 지정하여 고유한 "전자 지문" 형성.</p>
+				</div>
+				<div class="method-card">
+					<h4>2. ResNet-50 전이 학습</h4>
+					<p>ImageNet으로 사전 학습된 ResNet-50 모델 활용. 특징 추출 레이어는 고정(Frozen)하고, 출력층(Classifier)만 타겟 클래스에 맞게 학습.</p>
+				</div>
+			</div>
+
+			<!-- Visual 2: Model Architecture -->
+			<div class="visual-container">
+				<div class="visual-title">Fig 2. Model Architecture</div>
+				<svg class="svg-diagram" width="600" height="180" viewBox="0 0 600 180" fill="none"
+					xmlns="http://www.w3.org/2000/svg">
+					<!-- Input -->
+					<rect x="20" y="60" width="80" height="60" rx="4" fill="#F1F3F9" stroke="#E3E8EE" />
+					<text x="60" y="95" text-anchor="middle" font-size="11" fill="#4F566B">Input Image</text>
+
+					<!-- Arrow -->
+					<path d="M100 90 L 130 90" stroke="#E3E8EE" stroke-width="2" />
+
+					<!-- ResNet-50 Frozen Block -->
+					<rect x="130" y="40" width="180" height="100" rx="8" fill="#F8FAFF" stroke="#635BFF"
+						stroke-width="2" />
+					<rect x="140" y="50" width="160" height="80" rx="4" fill="#635BFF" fill-opacity="0.1" />
+					<text x="220" y="85" text-anchor="middle" font-size="13" fill="#635BFF"
+						font-weight="800">ResNet-50</text>
+					<text x="220" y="105" text-anchor="middle" font-size="10" fill="#635BFF"
+						font-weight="600">Pre-trained & Frozen</text>
+
+					<!-- Arrow -->
+					<path d="M310 90 L 340 90" stroke="#E3E8EE" stroke-width="2" />
+
+					<!-- Classifier -->
+					<rect x="340" y="50" width="140" height="80" rx="8" fill="#ECFDF5" stroke="#059669"
+						stroke-width="2" />
+					<text x="410" y="85" text-anchor="middle" font-size="12" fill="#059669" font-weight="800">New
+						Classifier</text>
+					<text x="410" y="105" text-anchor="middle" font-size="10" fill="#059669">Fully Connected</text>
+
+					<!-- Arrow -->
+					<path d="M480 90 L 510 90" stroke="#E3E8EE" stroke-width="2" />
+
+					<!-- Output -->
+					<circle cx="540" cy="90" r="30" fill="#FFFBEB" stroke="#D97706" stroke-width="2" />
+					<text x="540" y="95" text-anchor="middle" font-size="11" fill="#D97706"
+						font-weight="700">Output</text>
+				</svg>
+			</div>
+
+			<h3>실험 결과 및 데이터</h3>
+			<p>논문에서는 총 11개의 센서 어레이(TGS2602, PID-AH2, SS2198 등)를 사용하였으며, 가우시안 노이즈($x^* = x \times (1+z)$)를 통한 데이터 증강으로
+				불균형 문제를 해결했습니다.</p>
+
+			<table class="result-table">
+				<thead>
+					<tr>
+						<th>데이터셋</th>
+						<th>실험 설정</th>
+						<th>평균 정확도 (Accuracy)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan="2">UCI Public Data</td>
+						<td>무작위 가중치 초기화</td>
+						<td>63.21%</td>
+					</tr>
+					<tr>
+						<td><strong>전이학습 + 데이터증강 (제안)</strong></td>
+						<td><strong>99.51%</strong></td>
+					</tr>
+					<tr>
+						<td rowspan="2">실제 실험 데이터</td>
+						<td>무작위 가중치 초기화</td>
+						<td>63.48%</td>
+					</tr>
+					<tr>
+						<td><strong>전이학습 + 데이터증강 (제안)</strong></td>
+						<td><strong>99.13%</strong></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h3>학술적 의의</h3>
 			<ul>
-				<li>Transfer Learning</li>
-				<li>Image Classification</li>
-				<li>Deep Learning</li>
-				<li>Image Mapping</li>
+				<li><strong>특징 추출 자동화</strong>: 복잡한 전처리 과정 없이 이미지 변환만으로 혼합 가스의 미묘한 패턴 차이를 자동 추출함</li>
+				<li><strong>소량 데이터 극복</strong>: 전이 학습을 통해 데이터가 적은 도메인에서도 딥러닝 모델 적용 가능성을 입증</li>
+				<li><strong>실질적 활용도</strong>: 실제 환경 모니터링 시스템에서 악취 및 독성 가스 판별을 위한 기초 기술로 활용 가능</li>
 			</ul>
-
-			<h3>프로젝트 내용</h3>
-			<p>혼합 가스 분류를 위해 이미지 매핑 기법을 활용하고, Transfer Learning을 적용하여 효과적인 분류 모델을 개발했습니다.</p>
-
-			<img src="../assets/images/logo.png" alt="프로젝트 이미지" class="project-image">
 		</div>
 	</main>
 </body>
