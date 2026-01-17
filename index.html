@@ -1,127 +1,358 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 	<meta charset='utf-8'>
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Projects</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Modern Portfolio | Projects</title>
+	<!-- 폰트: Pretendard -->
+	<link rel="stylesheet" as="style" crossorigin
+		href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+	<!-- 아이콘: Lucide (SVG 기반) -->
+	<script src="https://unpkg.com/lucide@latest"></script>
 	<style>
+		:root {
+			--bg-color: #fcfcfd;
+			--card-bg: #ffffff;
+			--text-main: #1a1f36;
+			--text-sub: #4f566b;
+			--accent-color: #635bff;
+			--border-color: #e3e8ee;
+			--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+			--shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+			--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
 		body {
-			background-color: #f8f9fa;
+			font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+			background-color: var(--bg-color);
+			color: var(--text-main);
+			line-height: 1.6;
+			word-break: keep-all;
 		}
-		.navbar {
-			background-color: #fff !important;
-			box-shadow: 0 2px 4px rgba(0,0,0,.1);
+
+		/* Navigation */
+		nav {
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+			background: rgba(255, 255, 255, 0.8);
+			backdrop-filter: blur(10px);
+			border-bottom: 1px solid var(--border-color);
+			padding: 1rem 0;
 		}
-		.make-container {
-			max-width: 1200px;
+
+		.nav-container {
+			max-width: 1100px;
 			margin: 0 auto;
-			padding: 2rem 1rem;
+			padding: 0 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 		}
+
+		.brand {
+			font-size: 1.25rem;
+			font-weight: 800;
+			color: var(--accent-color);
+			text-decoration: none;
+			letter-spacing: -0.5px;
+		}
+
+		/* Main Content */
+		.container {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 4rem 20px;
+		}
+
+		.header-section {
+			margin-bottom: 3.5rem;
+		}
+
 		.make-title {
 			font-size: 2.5rem;
-			font-weight: bold;
-			margin-bottom: 2rem;
-			margin-top: 2rem;
+			font-weight: 800;
+			margin-bottom: 1rem;
+			letter-spacing: -1px;
+			color: var(--text-main);
 		}
+
+		.sub-title {
+			font-size: 1.1rem;
+			color: var(--text-sub);
+			max-width: 600px;
+		}
+
+		/* Project Grid */
+		.project-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+			gap: 24px;
+		}
+
+		.card-link {
+			text-decoration: none;
+			color: inherit;
+			display: block;
+		}
+
 		.card {
-			transition: transform 0.2s, box-shadow 0.2s;
+			background: var(--card-bg);
+			border-radius: 20px;
+			overflow: hidden;
+			border: 1px solid var(--border-color);
+			transition: var(--transition);
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			box-shadow: var(--shadow-sm);
 		}
+
 		.card:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+			transform: translateY(-8px);
+			box-shadow: var(--shadow-md);
+			border-color: var(--accent-color);
 		}
-		.card-img-top {
+
+		.card-img-wrapper {
+			position: relative;
 			width: 100%;
 			height: 200px;
-			object-fit: cover;
+			background-color: #f0f2f5;
+			overflow: hidden;
 		}
-		@media (max-width: 576px) {
+
+		.card-img-top {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: var(--transition);
+		}
+
+		.card:hover .card-img-top {
+			transform: scale(1.05);
+		}
+
+		.card-body {
+			padding: 1.5rem;
+			display: flex;
+			flex-direction: column;
+			flex-grow: 1;
+		}
+
+		.card-title {
+			font-size: 1.25rem;
+			font-weight: 700;
+			margin-bottom: 0.75rem;
+			line-height: 1.4;
+			color: var(--text-main);
+		}
+
+		.card-text {
+			font-size: 0.95rem;
+			color: var(--text-sub);
+			margin-bottom: 1.5rem;
+			flex-grow: 1;
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+
+		/* Badge Styling */
+		.badge-container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+			margin-top: auto;
+		}
+
+		.badge {
+			font-size: 0.75rem;
+			font-weight: 600;
+			padding: 4px 10px;
+			border-radius: 6px;
+			background: #f1f3f9;
+			color: #525f7f;
+		}
+
+		.badge.highlight {
+			background: #eef2ff;
+			color: #4f46e5;
+		}
+
+		.badge.success {
+			background: #ecfdf5;
+			color: #059669;
+		}
+
+		.badge.warning {
+			background: #fffbeb;
+			color: #d97706;
+		}
+
+		/* Mobile Adjustments */
+		@media (max-width: 640px) {
 			.make-title {
 				font-size: 2rem;
 			}
-			.card-columns {
-				column-count: 1;
+
+			.project-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.container {
+				padding: 2.5rem 20px;
 			}
 		}
 	</style>
 </head>
+
 <body>
-	<nav class="navbar navbar-expand-sm navbar-light bg-light" id="navbar">
-		<div class="container" id="nav-container">
-			<a href="index.html" class="navbar-brand">Projects</a>
+	<nav>
+		<div class="nav-container">
+			<a href="#" class="brand">PORTFOLIO.</a>
 		</div>
 	</nav>
 
-	<div class="container">
-		<h2 id="projects" class="make-title">Projects</h2>
-		
-		<div class="card-columns">
-			<!-- 프로젝트 카드 1 -->
-			<div class="card">
-				<img class="card-img-top" src="assets/images/logo.png" alt="프로젝트 이미지">
-				<div class="card-body">
-					<h5 class="card-title">프로젝트 제목 1</h5>
-					<p class="card-text">프로젝트에 대한 설명을 여기에 작성하세요. 이 프로젝트가 무엇인지, 어떤 기술을 사용했는지 등을 설명합니다.</p>
-					<a href="#" class="btn btn-primary">더보기</a>
-				</div>
-			</div>
+	<main class="container">
+		<header class="header-section">
+			<h2 id="projects" class="make-title">Selected Projects</h2>
+			<p class="sub-title">Computer Vision, MLOps, 그리고 NLP 분야에서 진행한 핵심 프로젝트들을 소개합니다.</p>
+		</header>
 
-			<!-- 프로젝트 카드 2 -->
-			<div class="card">
-				<img class="card-img-top" src="assets/images/logo.png" alt="프로젝트 이미지">
-				<div class="card-body">
-					<h5 class="card-title">프로젝트 제목 2</h5>
-					<p class="card-text">프로젝트에 대한 설명을 여기에 작성하세요. 이 프로젝트가 무엇인지, 어떤 기술을 사용했는지 등을 설명합니다.</p>
-					<a href="#" class="btn btn-primary">GitHub</a>
-					<a href="#" class="btn btn-primary">데모</a>
+		<div class="project-grid">
+			<!-- Q-Align -->
+			<a href="https://seed-to-tree.github.io/bmvc25_qalign/" class="card-link">
+				<div class="card">
+					<div class="card-img-wrapper">
+						<img class="card-img-top"
+							src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800"
+							alt="Q-Align" onerror="this.src='assets/images/logo.png'">
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">Q-Align: Alleviating Attention Leakage</h5>
+						<p class="card-text">BMVC 2025 논문 채택. Zero-shot appearance transfer에서 나타나는 attention leakage 문제를
+							해결하기 위한 Query-Query Alignment 방법론을 제안했습니다.</p>
+						<div class="badge-container">
+							<span class="badge highlight">BMVC 2025</span>
+							<span class="badge">Computer Vision</span>
+						</div>
+					</div>
 				</div>
-			</div>
+			</a>
 
-			<!-- 프로젝트 카드 3 -->
-			<div class="card">
-				<img class="card-img-top" src="assets/images/logo.png" alt="프로젝트 이미지">
-				<div class="card-body">
-					<h5 class="card-title">프로젝트 제목 3</h5>
-					<p class="card-text">프로젝트에 대한 설명을 여기에 작성하세요. 이 프로젝트가 무엇인지, 어떤 기술을 사용했는지 등을 설명합니다.</p>
-					<a href="#" class="btn btn-primary">더보기</a>
+			<!-- Smart City -->
+			<a href="projects/smart-city.html" class="card-link">
+				<div class="card">
+					<div class="card-img-wrapper">
+						<img class="card-img-top"
+							src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&q=80&w=800"
+							alt="Smart City" onerror="this.src='assets/images/logo.png'">
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">CCTV 기반 주차 점유율 감지 시스템</h5>
+						<p class="card-text">과기정통부 산학연계 프로젝트. 대구, 구미, 포항 등 주요 도시에 배포하여 3.3억원 매출 달성 및 99% 정확도를 기록한 상용
+							서비스입니다.</p>
+						<div class="badge-container">
+							<span class="badge success">상용화 완료</span>
+							<span class="badge">Object Detection</span>
+						</div>
+					</div>
 				</div>
-			</div>
+			</a>
 
-			<!-- 프로젝트 카드 4 -->
-			<div class="card">
-				<img class="card-img-top" src="assets/images/logo.png" alt="프로젝트 이미지">
-				<div class="card-body">
-					<h5 class="card-title">프로젝트 제목 4</h5>
-					<p class="card-text">프로젝트에 대한 설명을 여기에 작성하세요. 이 프로젝트가 무엇인지, 어떤 기술을 사용했는지 등을 설명합니다.</p>
-					<a href="#" class="btn btn-primary">더보기</a>
+			<!-- Agentic Anomaly Detection -->
+			<a href="projects/anomaly-detection.html" class="card-link">
+				<div class="card">
+					<div class="card-img-wrapper">
+						<img class="card-img-top"
+							src="https://images.unsplash.com/photo-1551288049-bbbda5366391?auto=format&fit=crop&q=80&w=800"
+							alt="Anomaly Detection" onerror="this.src='assets/images/logo.png'">
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">Agentic-based Anomaly Detection</h5>
+						<p class="card-text">KT IP 코어 네트워크용 지능형 이상 탐지. Databricks 및 Spark 기반 MLOps를 구축하여 분석 시간을 80%
+							단축시켰습니다.</p>
+						<div class="badge-container">
+							<span class="badge highlight">MLOps</span>
+							<span class="badge">Time Series</span>
+						</div>
+					</div>
 				</div>
-			</div>
+			</a>
 
-			<!-- 프로젝트 카드 5 -->
-			<div class="card">
-				<img class="card-img-top" src="assets/images/logo.png" alt="프로젝트 이미지">
-				<div class="card-body">
-					<h5 class="card-title">프로젝트 제목 5</h5>
-					<p class="card-text">프로젝트에 대한 설명을 여기에 작성하세요. 이 프로젝트가 무엇인지, 어떤 기술을 사용했는지 등을 설명합니다.</p>
-					<a href="#" class="btn btn-primary">더보기</a>
+			<!-- ETRI FASHION -->
+			<a href="projects/fashion-how.html" class="card-link">
+				<div class="card">
+					<div class="card-img-wrapper">
+						<img class="card-img-top"
+							src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&q=80&w=800"
+							alt="FASHION-HOW" onerror="this.src='assets/images/logo.png'">
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">ETRI FASHION-HOW AI Challenge</h5>
+						<p class="card-text">ETRI 원장상 수상작. Zero-shot 패션 분석 테스크 1위 달성 및 지속 학습(Continual Learning) 모델 개발을
+							수행했습니다.</p>
+						<div class="badge-container">
+							<span class="badge warning">전국 1위</span>
+							<span class="badge">Fashion AI</span>
+						</div>
+					</div>
 				</div>
-			</div>
+			</a>
 
-			<!-- 프로젝트 카드 6 -->
-			<div class="card">
-				<img class="card-img-top" src="assets/images/logo.png" alt="프로젝트 이미지">
-				<div class="card-body">
-					<h5 class="card-title">프로젝트 제목 6</h5>
-					<p class="card-text">프로젝트에 대한 설명을 여기에 작성하세요. 이 프로젝트가 무엇인지, 어떤 기술을 사용했는지 등을 설명합니다.</p>
-					<a href="#" class="btn btn-primary">더보기</a>
+			<!-- NLP Shipbuilding -->
+			<a href="projects/text-embedding.html" class="card-link">
+				<div class="card">
+					<div class="card-img-wrapper">
+						<img class="card-img-top"
+							src="https://images.unsplash.com/photo-1524522173746-f628baad3644?auto=format&fit=crop&q=80&w=800"
+							alt="NLP" onerror="this.src='assets/images/logo.png'">
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">Shipbuilding NLP Similarity Model</h5>
+						<p class="card-text">조선소 품목 체계 통합을 위한 텍스트 임베딩 모델. 수작업 매핑을 자동화하여 공급망 진단 효율성을 극대화했습니다.</p>
+						<div class="badge-container">
+							<span class="badge">NLP</span>
+							<span class="badge">Sentence Embedding</span>
+						</div>
+					</div>
 				</div>
-			</div>
+			</a>
+
+			<!-- Gas Classification -->
+			<a href="projects/gas-classification.html" class="card-link">
+				<div class="card">
+					<div class="card-img-wrapper">
+						<img class="card-img-top"
+							src="https://images.unsplash.com/photo-1532187875462-be93d5e493c8?auto=format&fit=crop&q=80&w=800"
+							alt="Gas Classification" onerror="this.src='assets/images/logo.png'">
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">Mixture Gas Classification</h5>
+						<p class="card-text">이미지 매핑 기반의 전이 학습을 활용한 혼합 가스 분류 모델 연구. 태성환경연구소 산학 협력 프로젝트입니다.</p>
+						<div class="badge-container">
+							<span class="badge">Transfer Learning</span>
+							<span class="badge">Image Mapping</span>
+						</div>
+					</div>
+				</div>
+			</a>
 		</div>
-	</div>
+	</main>
 
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script>
+		// Lucide 아이콘 초기화
+		lucide.createIcons();
+	</script>
 </body>
+
 </html>

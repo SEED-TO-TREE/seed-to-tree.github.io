@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ETRI FASHION-HOW AI Challenge</title>
+	<!-- 폰트: Pretendard -->
+	<link rel="stylesheet" as="style" crossorigin
+		href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+	<style>
+		:root {
+			--bg-color: #fcfcfd;
+			--card-bg: #ffffff;
+			--text-main: #1a1f36;
+			--text-sub: #4f566b;
+			--accent-color: #635bff;
+			--border-color: #e3e8ee;
+			--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+			--shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+			--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+			background-color: var(--bg-color);
+			color: var(--text-main);
+			line-height: 1.6;
+			word-break: keep-all;
+		}
+
+		/* Navigation */
+		nav {
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+			background: rgba(255, 255, 255, 0.8);
+			backdrop-filter: blur(10px);
+			border-bottom: 1px solid var(--border-color);
+			padding: 1rem 0;
+		}
+
+		.nav-container {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 0 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.brand {
+			font-size: 1.25rem;
+			font-weight: 800;
+			color: var(--accent-color);
+			text-decoration: none;
+			letter-spacing: -0.5px;
+		}
+
+		/* Main Content */
+		.container {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 3rem 20px;
+		}
+
+		.back-link {
+			margin-bottom: 2rem;
+		}
+
+		.back-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.75rem 1.25rem;
+			background: var(--card-bg);
+			color: var(--text-sub);
+			text-decoration: none;
+			border-radius: 12px;
+			border: 1px solid var(--border-color);
+			font-weight: 600;
+			font-size: 0.95rem;
+			transition: var(--transition);
+		}
+
+		.back-btn:hover {
+			border-color: var(--accent-color);
+			color: var(--accent-color);
+			transform: translateX(-4px);
+		}
+
+		.project-header {
+			margin-bottom: 3rem;
+		}
+
+		.project-title {
+			font-size: 2.5rem;
+			font-weight: 800;
+			margin-bottom: 1.25rem;
+			letter-spacing: -1px;
+			line-height: 1.2;
+		}
+
+		.badge-container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			margin-bottom: 1.5rem;
+		}
+
+		.badge {
+			font-size: 0.8rem;
+			font-weight: 600;
+			padding: 6px 12px;
+			border-radius: 8px;
+			background: #f1f3f9;
+			color: #525f7f;
+		}
+
+		.badge.warning {
+			background: #fffbeb;
+			color: #d97706;
+		}
+
+		.badge.info {
+			background: #e0f2fe;
+			color: #0369a1;
+		}
+
+		.badge.success {
+			background: #ecfdf5;
+			color: #059669;
+		}
+
+		.project-content {
+			background: var(--card-bg);
+			border-radius: 20px;
+			padding: 2.5rem;
+			border: 1px solid var(--border-color);
+			box-shadow: var(--shadow-sm);
+		}
+
+		.project-content h3 {
+			font-size: 1.5rem;
+			font-weight: 700;
+			margin-top: 2rem;
+			margin-bottom: 1rem;
+			color: var(--text-main);
+		}
+
+		.project-content h3:first-child {
+			margin-top: 0;
+		}
+
+		.project-content p {
+			color: var(--text-sub);
+			margin-bottom: 1.5rem;
+			line-height: 1.7;
+		}
+
+		.project-content ul {
+			margin-bottom: 1.5rem;
+			padding-left: 1.5rem;
+		}
+
+		.project-content li {
+			color: var(--text-sub);
+			margin-bottom: 0.75rem;
+			line-height: 1.7;
+		}
+
+		.project-content strong {
+			color: var(--text-main);
+			font-weight: 600;
+		}
+
+		.project-image {
+			width: 100%;
+			max-width: 100%;
+			margin: 2rem 0 0 0;
+			border-radius: 12px;
+			box-shadow: var(--shadow-sm);
+		}
+
+		/* Mobile Adjustments */
+		@media (max-width: 640px) {
+			.project-title {
+				font-size: 2rem;
+			}
+
+			.container {
+				padding: 2rem 20px;
+			}
+
+			.project-content {
+				padding: 1.5rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<div class="nav-container">
+			<a href="../index.html" class="brand">PORTFOLIO.</a>
+		</div>
+	</nav>
+
+	<main class="container">
+		<div class="back-link">
+			<a href="../index.html" class="back-btn">← 목록으로</a>
+		</div>
+
+		<div class="project-header">
+			<h1 class="project-title">ETRI FASHION-HOW AI Challenge</h1>
+			<div class="badge-container">
+				<span class="badge warning">1위</span>
+				<span class="badge info">Computer Vision</span>
+				<span class="badge success">2023</span>
+			</div>
+		</div>
+
+		<div class="project-content">
+			<h3>수상 내역</h3>
+			<ul>
+				<li><strong>ETRI 원장상</strong> 수상</li>
+				<li><strong>Zero-shot Task 1위</strong></li>
+				<li><strong>Continual Learning 3위</strong></li>
+			</ul>
+
+			<h3>프로젝트 개요</h3>
+			<p>ETRI (한국전자통신연구원)에서 주최한 FASHION-HOW AI Challenge에서 패션 이미지 분석 및 추천 시스템을 개발하여 우수한 성과를 달성했습니다.</p>
+
+			<h3>주요 성과</h3>
+			<ul>
+				<li>Zero-shot Task에서 <strong>1위</strong> 달성</li>
+				<li>Continual Learning Task에서 <strong>3위</strong> 달성</li>
+				<li>ETRI 원장상 수상</li>
+			</ul>
+
+			<h3>기술 스택</h3>
+			<ul>
+				<li>Computer Vision</li>
+				<li>Deep Learning</li>
+				<li>Zero-shot Learning</li>
+				<li>Continual Learning</li>
+				<li>Fashion Image Analysis</li>
+			</ul>
+
+			<h3>프로젝트 내용</h3>
+			<p>패션 이미지를 분석하고 추천하는 AI 시스템을 개발하여, 제로샷 학습과 지속 학습 태스크에서 우수한 성능을 보였습니다.</p>
+
+			<img src="../assets/images/logo.png" alt="프로젝트 이미지" class="project-image">
+		</div>
+	</main>
+</body>
+
+</html>
